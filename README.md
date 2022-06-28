@@ -1,8 +1,13 @@
+
 # Vim Cheatsheet
 
->Disclaimer: This cheatsheet is summarized from personal experience and other online tutorials. It should not be considered as an official advice.
+
+https://www.youtube.com/watch?v=RZ4p-saaQkc
+00:00 to 24:00
+24:00 to 47:39
 
 ## Global
+
 ```bash
 :help keyword # open help for keyword
 :o file       # open file
@@ -10,7 +15,12 @@
 :close        # close current pane
 ```
 
+## Mark line
+
+
+
 ## Cursor movement
+
 ```bash
 h        # move cursor left
 j        # move cursor down
@@ -28,12 +38,15 @@ B        # jump backwards to the start of a word (words can contain punctuation)
 0        # jump to the start of the line
 ^        # jump to the first non-blank character of the line
 $        # jump to the end of the line
+%        # jump starting brackets to ending brackets
 g_       # jump to the last non-blank character of the line
 gg       # go to the first line of the document
 G        # go to the last line of the document
 5G       # go to line 5
 fx       # jump to next occurrence of character x
+Fx       # same as fx in backword
 tx       # jump to before next occurrence of character x
+Tx       # same as Tx in backword
 }        # jump to next paragraph (or function/block, when editing code)
 {        # jump to previous paragraph (or function/block, when editing code)
 zz       # center cursor on screen
@@ -44,6 +57,7 @@ Ctrl + u # move back 1/2 a screen
 ```
 
 ## Insert mode - inserting/appending text
+
 ```bash
 i        # insert before the cursor
 I        # insert at the beginning of the line
@@ -55,16 +69,27 @@ ea       # insert (append) at the end of the word
 Esc      # exit insert mode
 ```
 
-## Editing
+## Replace
+
 ```bash
-r        # replace a single character
-J        # join line below to the current one
+r        # replace a single iharacter
+r$       # replace word
+```
+
+## Editing
+
+```bash
+J        # ioin iine below to the current one
 cc       # change (replace) entire line
 cw       # change (replace) to the start of the next word
 ce       # change (replace) to the end of the next word
 cb       # change (replace) to the start of the previous word
 c0       # change (replace) to the start of the line
 c$       # change (replace) to the end of the line
+ciw      # change word and go to insert mode
+ci"      # change lines inside "
+ci(      # change lines inside (
+ci{      # change lines inside {
 s        # delete character and substitute text
 S        # delete line and substitute text (same as cc)
 xp       # transpose two letters (delete and paste)
@@ -74,6 +99,7 @@ Ctrl + r # redo
 ```
 
 ## Marking text (visual mode)
+
 ```bash
 v        # start visual mode, mark lines, then do a command (like y-yank)
 V        # start linewise visual mode
@@ -89,33 +115,43 @@ Ctrl + v # start visual block mode
 ```
 
 ## Visual commands
+
 ```bash
 >       # shift text right
 <       # shift text left
 y       # yank (copy) marked text
 d       # delete marked text
+di"     # delete in a cotetion mark(")
+di(     # delete in a (
 ~       # switch case
 ```
 
 ## Cut and paste
+
 ```bash
 yy       # yank (copy) a line
 2yy      # yank (copy) 2 lines
 yw       # yank (copy) the characters of the word from the cursor position to the start of the next word
 y$       # yank (copy) to end of line
+yi"      # yank (copy) in a cotetion mark
 p        # put (paste) the clipboard after cursor
 P        # put (paste) before cursor
 dd       # delete (cut) a line
 2dd      # delete (cut) 2 lines
 dw       # delete (cut) the characters of the word from the cursor position to the start of the next word
+d5w      # delete five words
 D        # delete (cut) to the end of the line
 d$       # delete (cut) to the end of the line
+d%       # delete everything inside bracket and including bracket
 d^       # delete (cut) to the first non-blank character of the line
 d0       # delete (cut) to the begining of the line
+dtx      # delete before next occurrence of character x
+dfx      # delete to next occurrence of character x (including x)
 x        # delete (cut) character
 ```
 
 ## Search and replace
+
 ```bash
 /pattern       # search for pattern
 ?pattern       # search backward for pattern
@@ -128,6 +164,7 @@ N              # repeat search in opposite direction
 ```
 
 ## Search in multiple files
+
 ```bash
 :vimgrep /pattern/ {file} # search for pattern in multiple files
 :cn                       # jump to the next match
@@ -136,15 +173,18 @@ N              # repeat search in opposite direction
 ```
 
 ## Exiting
+
 ```bash
 :w              # write (save) the file, but don't exit
 :w !sudo tee %  # write out the current file using sudo
 :wq or :x or ZZ # write (save) and quit
 :q              # quit (fails if there are unsaved changes)
 :q! or ZQ       # quit and throw away unsaved changes
+:432            # go to line number 432
 ```
 
 ## Working with multiple files
+
 ```bash
 :e file       # edit a file in a new buffer
 :bnext or :bn # go to the next buffer
@@ -164,6 +204,7 @@ Ctrl + wk     # move cursor to the window above (horizontal split)
 ```
 
 ## Tabs
+
 ```bash
 :tabnew or :tabnew file # open a file in a new tab
 Ctrl + wT               # move the current split window into its own tab
